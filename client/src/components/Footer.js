@@ -1,38 +1,39 @@
-import React, { useState } from 'react';
-import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import axios from 'axios';
+import React, { useState } from 'react'
+import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import axios from 'axios'
 
 const Footer = () => {
   const [emailData, setEmailData] = useState({
     email: '',
     name: '',
     text: ''
-  });
+  })
 
-  const { email, name, text } = emailData;
+  const { email, name, text } = emailData
 
   const onChange = e => {
-    setEmailData({ ...emailData, [e.target.name]: e.target.value });
-  };
+    setEmailData({ ...emailData, [e.target.name]: e.target.value })
+  }
 
   // Send email to artist
   const onSubmit = async e => {
-    e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
+    e.preventDefault()
+    console.log('Success')
+    // try {
+    //   const config = {
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   };
 
-      const body = JSON.stringify({ email, name, text });
-      await axios.post('/api/email/', body, config);
-      console.log('success!');
-      setEmailData({ ...emailData, email: '', name: '', text: '' });
-    } catch (err) {
-      console.log(err.response.statusText);
-    }
-  };
+    //   const body = JSON.stringify({ email, name, text });
+    //   await axios.post('/api/email/', body, config);
+    //   console.log('success!');
+    //   setEmailData({ ...emailData, email: '', name: '', text: '' });
+    // } catch (err) {
+    //   console.log(err.response.statusText);
+    // }
+  }
 
   return (
     <div style={{ background: 'rgb(251, 223, 216)' }}>
@@ -101,7 +102,7 @@ const Footer = () => {
         </Form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
